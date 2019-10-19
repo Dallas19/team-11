@@ -29,6 +29,7 @@
     <!-- Bootstrap core CSS -->
     <link href="/bootstrap-4.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="http://cdn.grapecity.com/spreadjs/hosted/css/gc.spread.sheets.excel2013white.10.1.0.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript" src="http://cdn.grapecity.com/spreadjs/hosted/scripts/gc.spread.sheets.all.10.1.0.min.js"></script>
     <script type="text/javascript" src="http://cdn.grapecity.com/spreadjs/hosted/scripts/interop/gc.spread.excelio.10.1.0.min.js"></script>
@@ -40,6 +41,8 @@
     <script>
       function myFunction() {
         console.log("hello");
+        var d = document.getElementById("download");
+        d.style.display="none";
         var a = document.getElementById("d");
         var b = document.getElementById("e");
         var c = document.getElementById("f");
@@ -48,8 +51,6 @@
         c.style.display = "none";
       }
       function func1(){
-        var d = document.getElementById("display");
-        d.style.display = "block";
         var a = document.getElementById("d");
         var b = document.getElementById("e");
         var c = document.getElementById("f");
@@ -62,8 +63,6 @@
         c.style.display = "none";
       }
       function func2(){
-        var d = document.getElementById("display");
-        d.style.display = "block";
         var a = document.getElementById("d");
         var b = document.getElementById("e");
         var c = document.getElementById("f");
@@ -76,8 +75,6 @@
         c.style.display = "none";
       }
       function func3(){
-        var d = document.getElementById("display");
-        d.style.display = "block";
         var a = document.getElementById("d");
         var b = document.getElementById("e");
         var c = document.getElementById("f");
@@ -90,8 +87,6 @@
         c.style.display = "block";
       }
       function func4(){
-        var d = document.getElementById("display");
-        d.style.display = "block";
         var a = document.getElementById("d");
         var b = document.getElementById("e");
         var c = document.getElementById("f");
@@ -104,8 +99,6 @@
         c.style.display = "none";
       }
       function func5(){
-        var d = document.getElementById("display");
-        d.style.display = "block";
         var a = document.getElementById("d");
         var b = document.getElementById("e");
         var c = document.getElementById("f");
@@ -118,11 +111,10 @@
         c.style.display = "none";
       }
       function func6(){
-        var a = document.getElementById("display");
-        a.style.display = "none";
-
         var b = document.getElementById("loader");
         b.classList.add("loader");
+        var d = document.getElementById("download");
+        d.style.display="block";
       }
     </script>
     <style>
@@ -174,25 +166,23 @@
           </div>
     </div>
     <div class="gap">
-      <center><a onclick="setTimeout(func6(), 3000)" class="btn btn-primary">Process</a></center>
-
+      <center><a onclick="func6()" class="btn btn-primary center">Process</a></center>
     </div>
   </div>
 </div>
 
+<div id="loader" class=""><center></center></div>
 
-<div class="card divider">
-  <div id="demo" class="gap card-header"> </div>
+<div id="display" class="card divider">
+  <div id="demo" class="gap card-header"><center> </center></div>
   <div class="card-body">
-    <div id="loader" class=""><div>
-    <div id="display" class= "row">
-
-      <div class="col-sm">
+    <div class="row">
+      <div class="col-6">
         <div id= "a" class="gap"> </div>
         <div id= "b" class="gap"> </div>
         <div id= "c" class="gap"> </div>
       </div>
-      <div class="col-sm">
+      <div class="col-6">
         <div id= "d" class="gap">
           <input type="file" id="real-file"/>
         </div>
@@ -202,8 +192,11 @@
         <div id= "f" class="gap">
           <input type="file" id="real-file-2"/>
         </div>
-      </div>
+     </div>
     </div>
+    <form method="get" action="Sample Data/CFG-output.xlsx">
+        <button id="download" type="submit" onclick="window.open('Sample Data/CFG-output.xlsx')" class="btn"><i class="fa fa-download"></i> Download</button>
+    </form>
   </div>
 </div>
 </body>
