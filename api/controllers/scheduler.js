@@ -111,7 +111,7 @@ schedule = function (companies = [], inputSessions = []) {
     return schedule;
 }
 
-output = function (schedule) {
+output = function (schedule, students = []) {
     var i;
     var jsonArray;
     var json2xls = require('json2xls');
@@ -122,19 +122,19 @@ output = function (schedule) {
         var j;
         for (j = 0; j < schedule.sessions[0].companies.length; j++) {
             var tempArray = {
-                'Company' : schedule.sessions[i].companies[j].name,
-                'Slot 1' : schedule.sessions[i].companies[j].slots[0],
-                'Slot 2' : schedule.sessions[i].companies[j].slots[1],
-                'Slot 3' : schedule.sessions[i].companies[j].slots[2],
-                'Slot 4' : schedule.sessions[i].companies[j].slots[3],
-                'Slot 5' : schedule.sessions[i].companies[j].slots[4],
-                'Slot 6' : schedule.sessions[i].companies[j].slots[5],
-                'Slot 7' : schedule.sessions[i].companies[j].slots[6],
-                'Slot 8' : schedule.sessions[i].companies[j].slots[7],
-                'Slot 9' : schedule.sessions[i].companies[j].slots[8],
-                'Slot 10' : schedule.sessions[i].companies[j].slots[9],
-                'Slot 11' : schedule.sessions[i].companies[j].slots[10],
-                'Slot 12' : schedule.sessions[i].companies[j].slots[11]
+                'Company': schedule.sessions[i].companies[j].name,
+                'Slot 1': schedule.sessions[i].companies[j].slots[0],
+                'Slot 2': schedule.sessions[i].companies[j].slots[1],
+                'Slot 3': schedule.sessions[i].companies[j].slots[2],
+                'Slot 4': schedule.sessions[i].companies[j].slots[3],
+                'Slot 5': schedule.sessions[i].companies[j].slots[4],
+                'Slot 6': schedule.sessions[i].companies[j].slots[5],
+                'Slot 7': schedule.sessions[i].companies[j].slots[6],
+                'Slot 8': schedule.sessions[i].companies[j].slots[7],
+                'Slot 9': schedule.sessions[i].companies[j].slots[8],
+                'Slot 10': schedule.sessions[i].companies[j].slots[9],
+                'Slot 11': schedule.sessions[i].companies[j].slots[10],
+                'Slot 12': schedule.sessions[i].companies[j].slots[11]
             }
             jsonArray.push(tempArray);
         }
@@ -149,7 +149,66 @@ output = function (schedule) {
     var xls = json2xls(tabularData);
     // tabularData contains excel set up
     // send to UI to be downloaded with a button
-    fs.writeFileSync('../../schedule.xlsx', xls, 'binary');
+    fs.writeFileSync('../../companySchedule.xlsx', xls, 'binary');
+
+    var session1;
+    var session2;
+    var session3;
+    for (j = 0; j < students.length; j++) {
+        if (schedule.sessions[0].contains(students[j].school)) {
+            var tempArray = {
+                'Student': students[j].id,
+                'Slot 1': students.slots[0],
+                'Slot 2': students.slots[1],
+                'Slot 3': students.slots[2],
+                'Slot 4': students.slots[3],
+                'Slot 5': students.slots[4]
+            }
+            session1.push(tempArray);
+        }
+        if (schedule.sessions[1].contains(students[j].school)) {
+            var tempArray = {
+                'Student': students[j].id,
+                'Slot 1': students.slots[0],
+                'Slot 2': students.slots[1],
+                'Slot 3': students.slots[2],
+                'Slot 4': students.slots[3],
+                'Slot 5': students.slots[4]
+            }
+            session2.push(tempArray);
+        }
+        if (schedule.sessions[3].contains(students[j].school)) {
+            var tempArray = {
+                'Student': students[j].id,
+                'Slot 1': students.slots[0],
+                'Slot 2': students.slots[1],
+                'Slot 3': students.slots[2],
+                'Slot 4': students.slots[3],
+                'Slot 5': students.slots[4]
+            }
+            session3.push(tempArray);
+        }
+    }
+
+    var temp = {
+        'sheetName': 'Session ' + 1,
+        'data': session1
+    }
+    tabularData.push(temp);
+    var temp = {
+        'sheetName': 'Session ' + 2,
+        'data': session2
+    }
+    tabularData.push(temp);
+    var temp = {
+        'sheetName': 'Session ' + 3,
+        'data': session3
+    }
+    tabularData.push(temp);
+
+
+    xls = json2xls(tabularData);
+    // tabularData contains excel set up
+    // send to UI to be downloaded with a button
+    fs.writeFileSync('../../studentSchedule.xlsx', xls, 'binary');
 }
-
-
