@@ -204,7 +204,7 @@ output = function (schedule, students = []) {
     tabularData.push(temp);
 
 
-    xls = json2xls(tabularData);
+    var xls = json2xls(tabularData);
     // tabularData contains excel set up
     // send to UI to be downloaded with a button
     fs.writeFileSync('../../schedule.xlsx', xls, 'binary');
