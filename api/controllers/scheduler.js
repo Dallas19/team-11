@@ -1,8 +1,9 @@
 class Student {
-    constructor(id, slots = [], school) {
+    constructor(id, slots = [], school, email) {
         this.id = id;
         this.slots = slots;
         this.school = school;
+        this.email = email;
     }
 }
 
@@ -16,10 +17,11 @@ class Position {
 }
 
 class Company {
-    constructor(name, positions = [], slots = []) {
+    constructor(name, positions = [], slots = [], email) {
         this.name = name;
         this.positions = positions;
         this.slots = slots;
+        this.email = email;
     }
 }
 
@@ -140,16 +142,11 @@ output = function (schedule, students = []) {
         }
 
         var temp = {
-            'sheetName': 'Session ' + i,
+            'sheetName': 'Companies Session ' + i,
             'data': jsonArray
         }
         tabularData.push(temp);
     }
-
-    var xls = json2xls(tabularData);
-    // tabularData contains excel set up
-    // send to UI to be downloaded with a button
-    fs.writeFileSync('../../companySchedule.xlsx', xls, 'binary');
 
     var session1;
     var session2;
@@ -191,24 +188,24 @@ output = function (schedule, students = []) {
     }
 
     var temp = {
-        'sheetName': 'Session ' + 1,
+        'sheetName': 'Students Session 1',
         'data': session1
     }
     tabularData.push(temp);
     var temp = {
-        'sheetName': 'Session ' + 2,
+        'sheetName': 'Students Session 2',
         'data': session2
     }
     tabularData.push(temp);
     var temp = {
-        'sheetName': 'Session ' + 3,
+        'sheetName': 'Students Session 3',
         'data': session3
     }
     tabularData.push(temp);
 
 
-    xls = json2xls(tabularData);
+    var xls = json2xls(tabularData);
     // tabularData contains excel set up
     // send to UI to be downloaded with a button
-    fs.writeFileSync('../../studentSchedule.xlsx', xls, 'binary');
+    fs.writeFileSync('../../schedule.xlsx', xls, 'binary');
 }
