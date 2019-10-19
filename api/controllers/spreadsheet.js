@@ -1,3 +1,4 @@
+//Parsing the file into excel
 const xlsx = require('xlsx');
 const path = require('path');
 
@@ -10,6 +11,8 @@ exports.upload_student_ss = function(req, res) {
 
     var student_json = xlsx.utils.sheet_to_json(sheet);
     
+
+   /* For the students table */ 
     for (var i = 0; i < student_json.length; i++) {
         var student = student_json[i];
         var column_length = Object.keys(student).length;
@@ -26,6 +29,7 @@ exports.upload_student_ss = function(req, res) {
     }
     console.log(student_ranking);
 
+    /*For the company table */
     var company_data = xlsx.readFile(path.resolve('../Sample Data/CFG - Company Data.xlsx'));
     var company_sheet = company_data.Sheets['Companies'];
 
@@ -50,6 +54,7 @@ exports.upload_student_ss = function(req, res) {
     res.send('<pre>' + JSON.stringify(student_ranking, null, 2) + '</pre>' + '<pre>' + JSON.stringify(company_ranking, null, 2) + '</pre>');
 }
 
+/*Helper function*/
 function get_index_of_candidate(id)
     {
         return student_ranking.student_id[id];
