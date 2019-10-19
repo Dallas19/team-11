@@ -16,9 +16,8 @@ function emailCompanies(companies = [], schedule) {
                 message = message + "Slot " + k + ": " + schedule.sessions[i].companies[j].slots[k] + "\n";
             }
         }
+        // send email
     }
-
-    // send email
 }
 
 function emailStudents(students = []) {
@@ -33,7 +32,6 @@ function emailStudents(students = []) {
         for (j = 0; j < students[i].slots.length; j++) {
             message = message + "Slot " + j + ": " + students[i].slots[j] + "\n";
         }
+        // send email
     }
-
-    // send email
 }
