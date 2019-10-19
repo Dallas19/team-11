@@ -23,7 +23,7 @@ app.use('/api', require('./routes/api')());
 
 // Web Routes
 app.get('/*', (req, res) => {
-    res.sendFile(__dirname + '../CFG/index.html');
+    res.sendFile('../CFG/index.html');
 ;})
 
 server.listen(port, () => console.log(`Listening on port ${port}!`));
