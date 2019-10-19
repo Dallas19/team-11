@@ -63,13 +63,13 @@ matching_algorithm = function() {
     //     } 
     // } 
     //for the company's ranking
-    for (var i=0; i<company_ranking.length(); i++)
+    for (var i=0; i<company_ranking.length; i++)
         {
             //each array of ranking
             var tempsorted_ranking = [];
             //var visited_ranking = [];
 
-                for (var j=0; j<company_ranking[i].length(); j++)
+                for (var j=0; j<company_ranking[i].length; j++)
                 {
                     var value = company_ranking[i].rank[j];
                   //  if (visited_ranking[value]==-1) { break;}
