@@ -1,0 +1,19 @@
+{
+  "name": "team11_api",
+  "version": "1.0.0",
+  "description": "Team 11 Code For Good API",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "helmet": "^3.21.1",
+    "http": "0.0.0",
+    "path": "^0.12.7"
+  }
+}
