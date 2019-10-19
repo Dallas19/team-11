@@ -6,6 +6,7 @@ const app = express();
 const server = require('http').Server(app);
 const port = process.env.PORT || 3000;
 const helmet = require('helmet');
+const matching = require('./controllers/matching.js');
 
 // Allow Cross-Origin 
 app.use(cors());
@@ -25,5 +26,8 @@ app.use('/api', require('./routes/api')());
 app.get('/*', (req, res) => {
     res.sendFile(path.resolve(__dirname + '/../CFG/index.html'));
 ;})
+
+//Matching
+matching.parsing()
 
 server.listen(port, () => console.log(`Listening on port ${port}!`));
