@@ -21,22 +21,26 @@ exports.upload_student_ss = function(req, res) {
     console.log(student_ranking);
 
     var company_data = xlsx.readFile(path.resolve('../Sample Data/CFG - Company Data.xlsx'));
-    var company_sheet = student_data.Sheets['Students'];
+    var company_sheet = company_data.Sheets['Companies'];
 
-    var company_json = xlsx.utils.sheet_to_json(sheet);
+    var company_json = xlsx.utils.sheet_to_json(company_sheet);
     var company_ranking = [];
 
     for (var i = 0; i < company_json.length; i++) {
         var company = company_json[i];
-        var job_id = student['Job ID'].toString();
+        var column_length = Object.keys(company).length;
+        var job_id = company['Job ID'].toString();
         var job_rankings = [];
+        for (var j = 1; j <= (column_length-4); j++) {
+            job_rankings.push(company['Rank ' + j]);
+        };
         var obj = {
             job_id: job_id,
             job_rankings: job_rankings
         };
-        student_ranking.push(obj);
+        company_ranking.push(obj);
     }
-    console.log(student_ranking);
+    console.log(company_ranking);
 
-    res.send('<pre>' + JSON.stringify(student_json, null, 2) + '</pre>');
+    res.send('<pre>' + JSON.stringify(student_ranking, null, 2) + '</pre>' + '<pre>' + JSON.stringify(company_ranking, null, 2) + '</pre>');
 }
