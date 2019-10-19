@@ -115,6 +115,7 @@ output = function (schedule) {
     var i;
     var jsonArray;
     var json2xls = require('json2xls');
+    var fs = require('file-system');
 
     var tabularData;
     for (i = 0; i < 3; i++) {
@@ -146,7 +147,9 @@ output = function (schedule) {
     }
 
     var xls = json2xls(tabularData);
-    fs.writeFileSync('schedule.xlsx', xls, 'binary');
+    // tabularData contains excel set up
+    // send to UI to be downloaded with a button
+    fs.writeFileSync('../../schedule.xlsx', xls, 'binary');
 }
 
 
