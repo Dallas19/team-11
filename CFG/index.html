@@ -15,7 +15,65 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-
+    <script>
+      function myFunction () {
+        console.log("hello");
+        var a = document.getElementById("d");
+        var b = document.getElementById("e");
+        var c = document.getElementById("f");
+        a.style.display = "none";
+        b.style.display = "none";
+        c.style.display = "none";
+      }
+      function func1(){
+        var a = document.getElementById("d");
+        var b = document.getElementById("e");
+        var c = document.getElementById("f");
+        document.getElementById("demo").innerHTML = "Interview Match Options";
+        document.getElementById("a").innerHTML = "Company: ";
+        document.getElementById("b").innerHTML = "Student: ";
+        document.getElementById("c").innerHTML = "School Sessions: ";
+        a.style.display = "block";
+        b.style.display = "block";
+        c.style.display = "block";
+      }
+      function func2(){
+        var a = document.getElementById("d");
+        var b = document.getElementById("e");
+        var c = document.getElementById("f");
+        document.getElementById("demo").innerHTML = "Email Schedule";
+        document.getElementById("a").innerHTML = "School Sessions: ";
+        document.getElementById("b").innerHTML = "Students: ";
+        document.getElementById("c").innerHTML = "";
+        a.style.display = "block";
+        b.style.display = "block";
+        c.style.display = "none";
+      }
+      function func3(){
+        var a = document.getElementById("d");
+        var b = document.getElementById("e");
+        var c = document.getElementById("f");
+        document.getElementById("demo").innerHTML = "Job Match";
+        document.getElementById("a").innerHTML = "Companies: ";
+        document.getElementById("b").innerHTML = "Students: ";
+        document.getElementById("c").innerHTML = "";
+        a.style.display = "block";
+        b.style.display = "block";
+        c.style.display = "none";
+      }
+      function func4(){
+        var a = document.getElementById("d");
+        var b = document.getElementById("e");
+        var c = document.getElementById("f");
+        document.getElementById("demo").innerHTML = "Data";
+        document.getElementById("a").innerHTML = "Doi: ";
+        document.getElementById("b").innerHTML = "Sou: ";
+        document.getElementById("c").innerHTML = "";
+        a.style.display = "block";
+        b.style.display = "block";
+        c.style.display = "none";
+      }
+    </script>
     <style>
       .bd-placeholder-img {
         font-size: 1.125rem;
@@ -31,78 +89,68 @@
           font-size: 3.5rem;
         }
       }
+      .lol {
+        align-content: center;
+      }
+      .divider {
+        padding-top: 60px;
+      }
+      .gap {
+        padding-top: 20px;
+      }
     </style>
     <!-- Custom styles for this template -->
     <link href="jumbotron.css" rel="stylesheet">
   </head>
-  <body>
+  <body onload="myFunction()">
 <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
   <a class="navbar-brand" href="index.html">Education is Freedom</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-
-  <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="students.html">Students</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="admin.html">Admin</a>
-      </li>
-    </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form>
-  </div>
 </nav>
 
-<main role="main">
-
-  <!-- Main jumbotron for a primary marketing message or call to action -->
-  <div class="jumbotron">
+<div class="card divider">
+  <div class="card-body">
     <div class="container">
-      <h1 class="display-3">Education Is Freedom</h1>
-      <p>Our comprehensive solution.</p>
-      <p><a class="btn btn-primary btn-lg" href="students.html" role="button">Learn more »</a></p>
+          <div class="center">
+            <span class="dropdown-item-text"><b> Available Options </b></span>
+              <a onclick="func1()" class="dropdown-item" href="#">Match For Interview</a>
+              <a onclick="func2()" class="dropdown-item" href="#">Email Schedule</a>
+              <a onclick="func3()" class="dropdown-item" href="#">Match for Job</a>
+              <a onclick="func4()" class="dropdown-item" href="#">Data</a>
+          </div>
+    </div>
+    <div class="gap">
+      <a href="#" class="btn btn-primary">Process</a>
     </div>
   </div>
-  <!--
-  <div class="container">
-    <!-- Example row of columns -->
-  <!--
-    <div class="row">
-      <div class="col-md-4">
-        <h2>Heading</h2>
-        <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-        <p><a class="btn btn-secondary" href="#" role="button">View details »</a></p>
+</div>
+
+<div class="card divider">
+  <div id="demo" class="gap card-header"> </div>
+  <div class="card-body">
+    <div class= "row">
+      <div class="col-sm">
+        <div id= "a" class="gap"> </div>
+        <div id= "b" class="gap"> </div>
+        <div id= "c" class="gap"> </div>
       </div>
-      <div class="col-md-4">
-        <h2>Heading</h2>
-        <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-        <p><a class="btn btn-secondary" href="#" role="button">View details »</a></p>
-      </div>
-      <div class="col-md-4">
-        <h2>Heading</h2>
-        <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-        <p><a class="btn btn-secondary" href="#" role="button">View details »</a></p>
+      <div class="col-sm">
+        <div id= "d" class="gap"><button> Upload Excel </button></div>
+        <div id= "e" class="gap"><button> Upload Excel </button></div>
+        <div id= "f" class="gap"><button> Upload Excel </button></div>
       </div>
     </div>
-
-    <hr>
-
-  </div> <!-- /container -->
-
-</main>
+  </div>
+</div>
+</body>
 
 <footer class="stick-footer container">
-  <p>© Company 2017-2019</p>
+<p>© Company 2017-2019</p>
 </footer>
+
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-      <script>window.jQuery || document.write('<script src="/docs/4.3/assets/js/vendor/jquery-slim.min.js"><\/script>')</script><script src="/docs/4.3/assets/js/vendor/jquery-slim.min.js"></script><script src="/docs/4.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="/docs/4.3/assets/js/vendor/jquery-slim.min.js"><\/script>')</script><script src="/docs/4.3/assets/js/vendor/jquery-slim.min.js"></script><script src="/docs/4.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o" crossorigin="anonymous"></script>
 
 </body></html>
