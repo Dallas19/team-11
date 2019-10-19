@@ -10,16 +10,19 @@ exports.upload_student_ss = function(req, res) {
 
     var student_json = xlsx.utils.sheet_to_json(sheet);
     
-    
     for (var i = 0; i < student_json.length; i++) {
         var student = student_json[i];
+        var column_length = Object.keys(student).length;
         var student_id = student['Student ID'].toString();
-        var student_rankings = [student['Rank 1'], student['Rank 2'], student['Rank 3'], student['Rank 4'], student['Rank 5']];
-        var obj = {
-            student_id: student_id,
-            student_rankings: student_rankings
-        }
-        student_ranking.push(obj);
+        for (var j = 1; j <= (column_length-3); j++) {
+            var job_id = student['Rank ' + j];
+            var obj = {
+                "student_id": student_id,
+                "job_id": job_id,
+                "rank": j
+            };
+            student_ranking.push(obj);
+        };
     }
     console.log(student_ranking);
 
@@ -32,29 +35,25 @@ exports.upload_student_ss = function(req, res) {
         var company = company_json[i];
         var column_length = Object.keys(company).length;
         var job_id = company['Job ID'].toString();
-        var job_rankings = [];
         for (var j = 1; j <= (column_length-4); j++) {
-            job_rankings.push(company['Rank ' + j]);
+            var student_id = company['Rank ' + j];
+            var obj = {
+                "job_id": job_id,
+                "student_id": student_id,
+                "rank": j
+            };
+            company_ranking.push(obj);
         };
-        var obj = {
-            job_id: job_id,
-            job_rankings: job_rankings
-        };
-        company_ranking.push(obj);
     }
     console.log(company_ranking);
-   matching_algorithm(student_ranking,company_ranking);
+    matching_algorithm();
     res.send('<pre>' + JSON.stringify(student_ranking, null, 2) + '</pre>' + '<pre>' + JSON.stringify(company_ranking, null, 2) + '</pre>');
 }
 
+matching_algorithm = function() {
+    // for (var i=0; i<student.length(); i++) {
+    //     for (var j=0; j<student[i][1].length(); j++) {
 
-function matching_algorithm (student,job) {
-    for (var i=0; i<student.length(); i++)
-        {
-           for (var j=0; j<student[i][1].length(); j++)
-            {
-
-            } 
-        }
-        
-    }
+    //     } 
+    // } 
+}
