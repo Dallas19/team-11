@@ -1,7 +1,8 @@
 class Student {
-    constructor(studentName, studentID, rankings = []) {
+    constructor(studentName, studentID, school, rankings = []) {
         this.studentName = studentName;
         this.studentID = studentID;
+        this.school = school;
         this.rankings = rankings;
     }
 }

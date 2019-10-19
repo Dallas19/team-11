@@ -1,6 +1,8 @@
 import {Student, Job, Company} from '/classes'
 
-parsing(){
-    
+function parsing() {
+
+    const config = require('./data.txt');
+
 
 }
