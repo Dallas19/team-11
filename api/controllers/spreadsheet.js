@@ -33,7 +33,7 @@ exports.upload_student_ss = function(req, res) {
         var obj = {
             job_id: job_id,
             job_rankings: job_rankings
-        }
+        };
         student_ranking.push(obj);
     }
     console.log(student_ranking);
