@@ -46,6 +46,8 @@
         var a = document.getElementById("d");
         var b = document.getElementById("e");
         var c = document.getElementById("f");
+        var display = document.getElementById("display");
+        display.style.display = "block";
         a.style.display = "none";
         b.style.display = "none";
         c.style.display = "none";
@@ -54,6 +56,8 @@
         var a = document.getElementById("d");
         var b = document.getElementById("e");
         var c = document.getElementById("f");
+        var display = document.getElementById("display");
+        display.style.display = "block";
         document.getElementById("demo").innerHTML = "Interview Matching Options";
         document.getElementById("a").innerHTML = "Companies: ";
         document.getElementById("b").innerHTML = "Students: ";
@@ -66,6 +70,8 @@
         var a = document.getElementById("d");
         var b = document.getElementById("e");
         var c = document.getElementById("f");
+        var display = document.getElementById("display");
+        display.style.display = "block";
         document.getElementById("demo").innerHTML = "Schedule Interviews";
         document.getElementById("a").innerHTML = "Interview Matches: ";
         document.getElementById("b").innerHTML = "School Sessions: ";
@@ -78,6 +84,8 @@
         var a = document.getElementById("d");
         var b = document.getElementById("e");
         var c = document.getElementById("f");
+        var display = document.getElementById("display");
+        display.style.display = "block";
         document.getElementById("demo").innerHTML = "Email Schedules";
         document.getElementById("a").innerHTML = "Interview Schedules: ";
         document.getElementById("b").innerHTML = "Student Emails: ";
@@ -90,6 +98,8 @@
         var a = document.getElementById("d");
         var b = document.getElementById("e");
         var c = document.getElementById("f");
+        var display = document.getElementById("display");
+        display.style.display = "block";
         document.getElementById("demo").innerHTML = "Final Matching";
         document.getElementById("a").innerHTML = "Final Companies: ";
         document.getElementById("b").innerHTML = "Final Students: ";
@@ -102,6 +112,8 @@
         var a = document.getElementById("d");
         var b = document.getElementById("e");
         var c = document.getElementById("f");
+        var display = document.getElementById("display");
+        display.style.display = "block";
         document.getElementById("demo").innerHTML = "Outputs";
         document.getElementById("a").innerHTML = "Final Companies: ";
         document.getElementById("b").innerHTML = "Final Students: ";
@@ -111,10 +123,25 @@
         c.style.display = "none";
       }
       function func6(){
-        var b = document.getElementById("loader");
-        b.classList.add("loader");
-        var d = document.getElementById("download");
-        d.style.display="block";
+        var loader = document.getElementById("loader");
+        var loader_text = document.getElementById("loader-text");
+        loader.classList.add("loader");
+        // loader_text.classList.add("loader");
+        var download = document.getElementById("download");
+        var display = document.getElementById("display");
+
+        show = function() {
+          download.style.display = "none";
+          display.style.display = "none";
+          loader_text.style.display = "block";
+          setTimeout(hide, 2500);
+        },
+        hide = function() {
+          loader.style.display = "none";
+          loader_text.style.display = "none";
+          download.style.display = "block";
+        };
+        show();
       }
     </script>
     <style>
@@ -171,7 +198,10 @@
   </div>
 </div>
 
-<div id="loader" class=""><center></center></div>
+<div class="d-flex justify-content-center">
+  <div id="loader"></div>
+  <h1 id="loader-text" style="display: none;">Processing your files...</h1>
+</div>
 
 <div id="display" class="card divider">
   <div id="demo" class="gap card-header"><center> </center></div>
@@ -194,10 +224,10 @@
         </div>
      </div>
     </div>
-    <form method="get" action="Sample Data/CFG-output.xlsx">
-        <button id="download" type="submit" onclick="window.open('Sample Data/CFG-output.xlsx')" class="btn"><i class="fa fa-download"></i> Download</button>
-    </form>
   </div>
+</div>
+<div id="download" class="alert alert-success" role="alert">
+  Processing Successful! Download the Initial Matches: <a href="../Sample Data/CFG-output.xlsx" target="_blank" download><i class="fa fa-download"></i> Download</a>
 </div>
 </body>
 
