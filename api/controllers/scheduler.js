@@ -1,3 +1,6 @@
+/*Another way to read in the datas
+*/
+
 class Student {
     constructor(id, slots = [], school, email) {
         this.id = id;
