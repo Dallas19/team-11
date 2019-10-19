@@ -7,16 +7,19 @@ class Job {
 }
 
 class Company{
-    constructor(job=[])
+    constructor(jobid, posname, job=[])
     {
+        this.posname = posname;
+        this.jobid = jobid;
         this.job = job;
     }
 }
 
 class Student{
-    constructor(studentname, studentID, ranking=[])
+    constructor(studentname, school,studentID, ranking=[])
         {
             this.studentname = studentname;
+            this.school = school;
             this.studentID = studentID;
             this.ranking = ranking;
         }

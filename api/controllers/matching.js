@@ -1,12 +1,3 @@
-/*
-
-
-
-
-
-
-*/
-
 import {Job,Company,Student} from './class'
 
 
