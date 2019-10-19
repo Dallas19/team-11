@@ -93,8 +93,7 @@ schedule = function (companies = [], inputSessions = []) {
                                     companies[i].positions[j].students[k].slots[l] = companies[i].name;
                                     companies[i].positions[j].slots--;
                                     break;
-                                }
-                                else if (inputSessions[p].companies[i].slots[l * 2 + 1] == "") {
+                                } else if (inputSessions[p].companies[i].slots[l * 2 + 1] == "") {
                                     inputSessions[p].companies[i].slots[l * 2 + 1] = companies[i].positions[j].students[k].id;
                                     companies[i].positions[j].students[k].slots[l] = companies[i].name;
                                     companies[i].positions[j].slots--;
@@ -108,6 +107,46 @@ schedule = function (companies = [], inputSessions = []) {
             }
         }
     }
-    var schedule = { sessions : inputSessions };
+    var schedule = {sessions: inputSessions};
     return schedule;
 }
+
+output = function (schedule) {
+    var i;
+    var jsonArray;
+    var json2xls = require('json2xls');
+
+    var tabularData;
+    for (i = 0; i < 3; i++) {
+        var j;
+        for (j = 0; j < schedule.sessions[0].companies.length; j++) {
+            var tempArray = {
+                'Company' : schedule.sessions[i].companies[j].name,
+                'Slot 1' : schedule.sessions[i].companies[j].slots[0],
+                'Slot 2' : schedule.sessions[i].companies[j].slots[1],
+                'Slot 3' : schedule.sessions[i].companies[j].slots[2],
+                'Slot 4' : schedule.sessions[i].companies[j].slots[3],
+                'Slot 5' : schedule.sessions[i].companies[j].slots[4],
+                'Slot 6' : schedule.sessions[i].companies[j].slots[5],
+                'Slot 7' : schedule.sessions[i].companies[j].slots[6],
+                'Slot 8' : schedule.sessions[i].companies[j].slots[7],
+                'Slot 9' : schedule.sessions[i].companies[j].slots[8],
+                'Slot 10' : schedule.sessions[i].companies[j].slots[9],
+                'Slot 11' : schedule.sessions[i].companies[j].slots[10],
+                'Slot 12' : schedule.sessions[i].companies[j].slots[11]
+            }
+            jsonArray.push(tempArray);
+        }
+
+        var temp = {
+            'sheetName': 'Session ' + i,
+            'data': jsonArray
+        }
+        tabularData.push(temp);
+    }
+
+    var xls = json2xls(tabularData);
+    fs.writeFileSync('schedule.xlsx', xls, 'binary');
+}
+
+
