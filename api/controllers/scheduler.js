@@ -1,8 +1,9 @@
 class Student {
-    constructor(id, slots = [], school) {
+    constructor(id, slots = [], school, email) {
         this.id = id;
         this.slots = slots;
         this.school = school;
+        this.email = email;
     }
 }
 
@@ -16,10 +17,11 @@ class Position {
 }
 
 class Company {
-    constructor(name, positions = [], slots = []) {
+    constructor(name, positions = [], slots = [], email) {
         this.name = name;
         this.positions = positions;
         this.slots = slots;
+        this.email = email;
     }
 }
 
