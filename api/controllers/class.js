@@ -1,3 +1,6 @@
+/*Class Hierachy
+could be for another solution
+*/
 class Job {
     constructor(jobid, ranking=[])
         {
