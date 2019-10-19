@@ -16,7 +16,10 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 // MEDIA (Logos, Resumes, and Public Documents)
-app.use('/media', express.static('media'));
+app.use('/media', express.static(path.join(__dirname, 'media')));
+
+// File Data
+app.use('/data', express.static(path.join(__dirname, 'Sample Data')));
 
 // API Routes
 app.use('/api', require('./routes/api')());
