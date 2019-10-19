@@ -142,16 +142,11 @@ output = function (schedule, students = []) {
         }
 
         var temp = {
-            'sheetName': 'Session ' + i,
+            'sheetName': 'Companies Session ' + i,
             'data': jsonArray
         }
         tabularData.push(temp);
     }
-
-    var xls = json2xls(tabularData);
-    // tabularData contains excel set up
-    // send to UI to be downloaded with a button
-    fs.writeFileSync('../../companySchedule.xlsx', xls, 'binary');
 
     var session1;
     var session2;
@@ -193,17 +188,17 @@ output = function (schedule, students = []) {
     }
 
     var temp = {
-        'sheetName': 'Session ' + 1,
+        'sheetName': 'Students Session 1',
         'data': session1
     }
     tabularData.push(temp);
     var temp = {
-        'sheetName': 'Session ' + 2,
+        'sheetName': 'Students Session 2',
         'data': session2
     }
     tabularData.push(temp);
     var temp = {
-        'sheetName': 'Session ' + 3,
+        'sheetName': 'Students Session 3',
         'data': session3
     }
     tabularData.push(temp);
@@ -212,5 +207,5 @@ output = function (schedule, students = []) {
     xls = json2xls(tabularData);
     // tabularData contains excel set up
     // send to UI to be downloaded with a button
-    fs.writeFileSync('../../studentSchedule.xlsx', xls, 'binary');
+    fs.writeFileSync('../../schedule.xlsx', xls, 'binary');
 }
