@@ -80,6 +80,9 @@ matching_algorithm = function() {
                   //  if (visited_ranking[value]==-1) { break;}
                     var index_of_candidate = get_index_of_candidate(company_ranking[i].rank[j]);
                     var candpos = student_ranking[index_of_candidate][value];
+
+                    //Weighted average can be also implemented by 
+                    /* diff = (company/candidate) + candidate ; */ 
                     var diff = Math.abs(candpos-j);
                     tempsorted_ranking.push(diff+j);
                 }
