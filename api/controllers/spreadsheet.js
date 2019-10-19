@@ -1,12 +1,15 @@
 const xlsx = require('xlsx');
 const path = require('path');
 
+var student_ranking = [];
+var company_ranking = [];
+
 exports.upload_student_ss = function(req, res) {
     var student_data = xlsx.readFile(path.resolve('../Sample Data/CFG - Student Data.xlsx'));
     var sheet = student_data.Sheets['Students'];
 
     var student_json = xlsx.utils.sheet_to_json(sheet);
-    var student_ranking = [];
+    
     
     for (var i = 0; i < student_json.length; i++) {
         var student = student_json[i];
@@ -24,7 +27,6 @@ exports.upload_student_ss = function(req, res) {
     var company_sheet = company_data.Sheets['Companies'];
 
     var company_json = xlsx.utils.sheet_to_json(company_sheet);
-    var company_ranking = [];
 
     for (var i = 0; i < company_json.length; i++) {
         var company = company_json[i];
@@ -41,6 +43,18 @@ exports.upload_student_ss = function(req, res) {
         company_ranking.push(obj);
     }
     console.log(company_ranking);
-
+   matching_algorithm(student_ranking,company_ranking);
     res.send('<pre>' + JSON.stringify(student_ranking, null, 2) + '</pre>' + '<pre>' + JSON.stringify(company_ranking, null, 2) + '</pre>');
 }
+
+
+function matching_algorithm (student,job) {
+    for (var i=0; i<student.length(); i++)
+        {
+           for (var j=0; j<student[i][1].length(); j++)
+            {
+
+            } 
+        }
+        
+    }
