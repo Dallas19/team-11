@@ -47,7 +47,7 @@ determineSlots = function (companies = []) {
     for (i = 0; i < companies.length; i++) {
         var j;
         var positions = companies[i].positions;
-        var openings;
+        var openings = 0;
         for (j = 0; j < positions.length; j++) {
             openings = openings + positions[j].openings;
         }
