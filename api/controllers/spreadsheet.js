@@ -35,7 +35,6 @@ exports.upload_student_ss = function(req, res) {
         var company = company_json[i];
         var column_length = Object.keys(company).length;
         var job_id = company['Job ID'].toString();
-        var job_rankings = [];
         for (var j = 1; j <= (column_length-4); j++) {
             var student_id = company['Rank ' + j];
             var obj = {
