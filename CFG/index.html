@@ -48,6 +48,8 @@
         var c = document.getElementById("f");
         var display = document.getElementById("display");
         display.style.display = "block";
+        var download = document.getElementById("download");
+        download.style.display = "none";
         a.style.display = "none";
         b.style.display = "none";
         c.style.display = "none";
@@ -58,6 +60,8 @@
         var c = document.getElementById("f");
         var display = document.getElementById("display");
         display.style.display = "block";
+        var download = document.getElementById("download");
+        download.style.display = "none";
         document.getElementById("demo").innerHTML = "Interview Matching Options";
         document.getElementById("a").innerHTML = "Companies: ";
         document.getElementById("b").innerHTML = "Students: ";
@@ -72,6 +76,8 @@
         var c = document.getElementById("f");
         var display = document.getElementById("display");
         display.style.display = "block";
+        var download = document.getElementById("download");
+        download.style.display = "none";
         document.getElementById("demo").innerHTML = "Schedule Interviews";
         document.getElementById("a").innerHTML = "Interview Matches: ";
         document.getElementById("b").innerHTML = "School Sessions: ";
@@ -86,6 +92,8 @@
         var c = document.getElementById("f");
         var display = document.getElementById("display");
         display.style.display = "block";
+        var download = document.getElementById("download");
+        download.style.display = "none";
         document.getElementById("demo").innerHTML = "Email Schedules";
         document.getElementById("a").innerHTML = "Interview Schedules: ";
         document.getElementById("b").innerHTML = "Student Emails: ";
@@ -100,6 +108,8 @@
         var c = document.getElementById("f");
         var display = document.getElementById("display");
         display.style.display = "block";
+        var download = document.getElementById("download");
+        download.style.display = "none";
         document.getElementById("demo").innerHTML = "Final Matching";
         document.getElementById("a").innerHTML = "Final Companies: ";
         document.getElementById("b").innerHTML = "Final Students: ";
@@ -114,6 +124,8 @@
         var c = document.getElementById("f");
         var display = document.getElementById("display");
         display.style.display = "block";
+        var download = document.getElementById("download");
+        download.style.display = "none";
         document.getElementById("demo").innerHTML = "Outputs";
         document.getElementById("a").innerHTML = "Final Companies: ";
         document.getElementById("b").innerHTML = "Final Students: ";
@@ -122,7 +134,7 @@
         b.style.display = "block";
         c.style.display = "none";
       }
-      function func6(){
+      function showLoader(){
         var loader = document.getElementById("loader");
         var loader_text = document.getElementById("loader-text");
         loader.classList.add("loader");
@@ -133,6 +145,7 @@
         show = function() {
           download.style.display = "none";
           display.style.display = "none";
+          loader.style.display = "block";
           loader_text.style.display = "block";
           setTimeout(hide, 2500);
         },
@@ -180,7 +193,7 @@
   </head>
   <body onload="myFunction()">
 <nav class="navbar navbar-expand-md navbar fixed-top">
-  <img class="navbar-brand" href="index.html" src="../CFG/images/find-your-future.jpeg">
+  <img class="navbar-brand" href="index.html" src="http://localhost:3000/media/find-your-future.jpeg">
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -200,12 +213,12 @@
           </div>
     </div>
     <div class="gap">
-      <center><a onclick="func6()" class="btn btn-primary center">Process</a></center>
+      <center><a onclick="showLoader()" class="btn btn-primary center" style="color: white !important;">Process Files</a></center>
     </div>
   </div>
 </div>
 
-<div class="d-flex justify-content-center">
+<div class="d-flex align-items-center flex-column">
   <div id="loader"></div>
   <h1 id="loader-text" style="display: none;">Processing your files...</h1>
 </div>
@@ -234,7 +247,7 @@
   </div>
 </div>
 <div id="download" class="alert alert-success" role="alert">
-  Processing Successful! Download the Initial Matches: <a href="../Sample Data/CFG-output.xlsx" target="_blank" download><i class="fa fa-download"></i> Download</a>
+  Processing Successful! Download the Initial Matches: <a href="/data/Sample Data/CFG-output.xlsx" download><i class="fa fa-download"></i> Download</a>
 </div>
 </body>
 
